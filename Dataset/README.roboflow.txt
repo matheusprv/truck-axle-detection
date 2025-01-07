@@ -1,8 +1,8 @@
 
-truck-axle-detection - v1 2025-01-06 9:32pm
+truck-axle-detection - v2 2025-01-07 2:49pm
 ==============================
 
-This dataset was exported via roboflow.com on January 7, 2025 at 12:33 AM GMT
+This dataset was exported via roboflow.com on January 7, 2025 at 5:50 PM GMT
 
 Roboflow is an end-to-end computer vision platform that helps you
 * collaborate with your team on computer vision projects
