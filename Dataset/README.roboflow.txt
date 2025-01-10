@@ -1,8 +1,8 @@
 
-truck-axle-detection - v2 2025-01-07 2:49pm
+truck-axle-detection - v3 2025-01-10 7:02am
 ==============================
 
-This dataset was exported via roboflow.com on January 7, 2025 at 5:50 PM GMT
+This dataset was exported via roboflow.com on January 10, 2025 at 10:02 AM GMT
 
 Roboflow is an end-to-end computer vision platform that helps you
 * collaborate with your team on computer vision projects
@@ -15,7 +15,7 @@ Roboflow is an end-to-end computer vision platform that helps you
 For state of the art Computer Vision training notebooks you can use with this dataset,
 visit https://github.com/roboflow/notebooks
 
-To find over 100k other datasets and pre-trained models, visit https://universe.roboflow.com
+To find over 100k other datasets and preplt.savefig(f"data_analysis/{self.type}_axle_localization.png")-trained models, visit https://universe.roboflow.com
 
 The dataset includes 1739 images.
 -axle are annotated in YOLOv11 format.

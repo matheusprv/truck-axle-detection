@@ -8,6 +8,6 @@ names: ['-axle']
 roboflow:
   workspace: truck-axle
   project: truck-axle-detection
-  version: 2
+  version: 3
   license: CC BY 4.0
-  url: https://universe.roboflow.com/truck-axle/truck-axle-detection/dataset/2
+  url: https://universe.roboflow.com/truck-axle/truck-axle-detection/dataset/3
