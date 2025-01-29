@@ -1,3 +1,4 @@
 TruckDataset.zip
 *.keras
 *.pth
+*.pt
