@@ -14,6 +14,10 @@
 
 \documentclass[12pt]{article}
 
+\usepackage{multirow}
+\usepackage{xcolor}
+
+
 \usepackage{sbc-template}
 
 \usepackage{graphicx,url}
@@ -47,11 +51,11 @@
 
 
 \section{Introdução}
-    Segundo o Conselho Nacional de Trânsito (CONTRAN), o transporte de cargas em veículos pesados está sujeito a limites para o Peso Bruto Total Combinado (PBTC), que corresponde à soma do peso do veículo, sua carroceria e a carga transportada. Nesse contexto, veículos de três eixos do tipo semirreboque podem atingir um PBTC máximo de 25,5 toneladas, enquanto veículos de quatro eixos têm limite de até 58,5 toneladas \cite{resolucao_contran}.
+    Segundo o Conselho Nacional de Trânsito (CONTRAN), o transporte de cargas em veículos pesados está sujeito a limites para o Peso Bruto Total Combinado (PBTC), que corresponde à soma do peso do veículo, sua carroceria e a carga transportada. Assim, veículos de três eixos do tipo semirreboque podem atingir um PBTC máximo de 25,5 toneladas, e veículos de quatro eixos têm limite de até 58,5 toneladas \cite{resolucao_contran}.
     
-    Conforme discutido em \cite{damage_on_roads}, o tráfego de veículos leves e pesados em trechos rodoviários pode causar danos às estradas, sendo que os veículos de maior peso exercem um impacto significativo sobre as condições do pavimento, acelerando sua deterioração ao longo do tempo.
+    Veículos com um maior peso exercem um impacto significativo sobre as condições do pavimento, acelerando sua deterioração ao longo do tempo, levando a danos às estradas em trechos rodoviários \cite{damage_on_roads}.
     
-    Para mitigar esses impactos, diversas cidades brasileiras restringem a circulação de veículos pesados em áreas urbanas, visando preservar as vias públicas. Um exemplo disso ocorreu em Coronel Fabriciano, Minas Gerais, onde o Decreto Municipal nº 8.472/2023 proibiu a passagem de veículos com peso bruto total acima de 23 toneladas e aqueles com mais de três eixos em vias de quatro bairros específicos \cite{prefeitura_de_coronel_fabriciano}.
+    Para mitigar esses impactos, diversas cidades brasileiras adotam restrições à circulação de veículos pesados em áreas urbanas, com o objetivo de preservar a infraestrutura viária. Um exemplo disso ocorreu em Coronel Fabriciano, Minas Gerais, onde o Decreto Municipal nº 8.472/2023 proibiu a passagem de veículos com peso bruto total acima de 23 toneladas, bem como daqueles com mais de três eixos, em vias de quatro bairros específicos \cite{prefeitura_de_coronel_fabriciano}. Da mesma forma, em Ouro Branco, Minas Gerais, a Lei Municipal nº 2.794/2024 restringe a circulação de veículos de carga com três ou mais eixos em áreas de patrimônio histórico, proteção ambiental, unidades de conservação e outros locais determinados, salvo em casos de autorização prévia \cite{lei_ourobranco_2024}.
     
     Para auxiliar na fiscalização do trânsito em diferentes áreas, este trabalho explora a hipótese de que redes neurais convolucionais podem ser utilizadas para identificar a quantidade de eixos dos veículos. Essa abordagem é fundamentada no fato de que essas redes já demonstraram excelentes resultados na identificação de diferentes classes de veículos, conforme apresentado em \cite{iluminacao_adversa}, e na contagem de eixos, conforme explorado em \cite{marcomini2023truckaxledetectionconvolutional}.
 
@@ -59,11 +63,11 @@
 
     Os caminhões podem variar em tamanho, tipo de carga e configuração da cabine. Para classificar essas características, \cite{Almutairi2022} utilizou imagens laterais de veículos capturadas pelo Departamento de Transporte da Flórida. O estudo, focado na classificação do tipo de caminhão com base nos critérios da Federated Highway Administration, alcançou 89\% de acurácia no conjunto de testes usando o modelo Inception V3.
 
-    Nem sempre as condições de iluminação são propicias e, levando este fator em consideração, \cite{iluminacao_adversa} criou um dataset com condições de iluminação adversas para classificar tipos de veículos. O treinamento envolveu diferentes modelos com redes convolucionais pré-treinadas, obtendo melhores resultados com uma ResNet, atingindo um resultado de 99.68\%.
+    Nem sempre as condições de iluminação são propicias, e, levando este fator em consideração, \cite{iluminacao_adversa} criou um dataset com condições de iluminação adversas para classificar tipos de veículos. O treinamento envolveu diferentes modelos com redes convolucionais pré-treinadas, obtendo melhores resultados com uma ResNet, atingindo um resultado de 99.68\%.
 
     Mesmo possuindo imagens laterais, nem sempre elas obterão uma visão completa dos veículos, que podem não caber por completo na imagem. Dessa forma, \cite{Souza2024} propôs um algoritmo para reconstruir uma imagem com diferentes quadros de um vídeo a partir da passagem de um veículo. Em seguida, utilizando o YOLO foi detectado a quantidade de eixos dos veículos que estavam passando, obtendo melhores resultados com o YOLOv5m.
 
-    Além de se preocupar com a contagem de eixos, \cite{Miles2022} também se preocupou com a velocidade dos veículos, ao mesmo tempo que se preocupava com a não visibilidade dos eixos de todos os veículos. Dessa forma, utilizando a YOLOv4 e, ignorando veículos que não era possível identificar todos os eixos, foi obtido um mAP de 93.3\% nas imagens de teste.
+    Além de se preocupar com a contagem de eixos, \cite{Miles2022} também se preocupou com a velocidade dos veículos, ao mesmo tempo que se preocupava com a não visibilidade dos eixos de todos os veículos. Dessa forma, utilizando a YOLOv4 e ignorando veículos que não era possível identificar todos os eixos, foi obtido um mAP de 93.3\% nas imagens de teste.
 
     Por fim, \cite{marcomini2023truckaxledetectionconvolutional} decidiu investigar diferentes arquiteturas para a detecção exclusiva de eixos a partir de imagens coletadas em rodovias no Brasil, avaliando modelos de Fast R-CNN, diferentes versões do YOLOv3 e uma rede neural Single Shot Detector (SSD). Assim, os modelos YOLOv3-spp e SSD-ssd300 obtiveram os melhores resultados ao calcular o F1-score, obtendo uma pontuação de 0.98.
 
@@ -74,9 +78,9 @@
     \subsection{Base de dados}
         Entre os artigos mencionados, observa-se que as bases de dados utilizadas são, em sua maioria, privadas e destinadas a objetivos específicos. Um exemplo é apresentado em \cite{Miles2022}, onde os dados foram fornecidos por uma empresa particular, sendo o desenvolvimento do projeto direcionado para uma aplicação específica desses dados.
         
-        Por outro lado, em \cite{marcomini2023truckaxledetectionconvolutional}, os próprios autores destacam como principal contribuição do projeto a disponibilização de um \textit{dataset} contendo 382 imagens rotuladas, que identificam as posições de 1303 eixos de caminhões. Embora o número de imagens seja limitado, ele é suficiente para estudos iniciais de técnicas de detecção. Além disso, o uso de técnicas de \textit{data augmentation }pode ampliar a quantidade de dados disponíveis, aumentando a robustez dos modelos desenvolvidos.
+        Por outro lado, em \cite{marcomini2023truckaxledetectionconvolutional}, os próprios autores destacam como principal contribuição do projeto a disponibilização de um \textit{dataset} contendo 382 imagens rotuladas, que identificam as posições de 1303 eixos de caminhões. Embora o número de imagens seja limitado, ele é suficiente para estudos iniciais de técnicas de detecção. Além disso, o uso de técnicas de \textit{data augmentation} pode ampliar a quantidade de dados disponíveis, aumentando a robustez dos modelos desenvolvidos.
         
-        As imagens do \textit{dataset} foram capturadas lateralmente, oferecendo uma visão clara dos eixos dos veículos, como ilustrado em \ref{fig:caminhaoExemplo}. Todas as imagens foram registradas sob luz natural, de modo que o \textit{dataset} não inclui exemplos capturados durante o período noturno.
+        As imagens do \textit{dataset} foram capturadas lateralmente, oferecendo uma visão sem obstruções dos eixos dos veículos, como ilustrado em \ref{fig:caminhaoExemplo}. Todas as imagens foram registradas sob luz natural, de modo que o \textit{dataset} não inclui exemplos capturados durante o período noturno.
 
         \begin{figure}[ht]
             \centering
@@ -87,22 +91,32 @@
 
     \subsection{Pré-processamento}
 
-        Os autores do dataset não disponibilizaram uma separação padrão entre imagens de treino, validação e teste, somente a divisão de 9:1 de imagens de treino em relação a testes. Dessa forma, as imagens serão escolhidas aleatoriamente dentre o conjunto de dados.
-
-        As imagens que foram selecionadas para o processo de treinamento passarão por uma etapa de \textit{data augmentation}, ocorrendo variações aleatórias nas características das imagens, como saturação, exposição, hue, inversão horizontal e adição de ruído aleatório.
-
-        Com essas modificações, espera-se que o modelo fique mais robusto e consiga aprender melhor a identificar as características dos eixos, a fim de realizar melhores predições ao final.
+        Ao explorar o dataset compartilhado pelos autores, foi identificada uma quantidade maior de imagens do que a utilizada originalmente por eles, totalizando 725 imagens. No entanto, essas imagens não possuíam as anotações das localizações dos eixos.
+        
+        Para solucionar esse problema, utilizou-se a ferramenta Roboflow para realizar a identificação manual dos eixos. Posteriormente, as imagens foram divididas em três conjuntos: 70\% para treino, 15\% para avaliação e 15\% para teste.
+        
+        Nas imagens destinadas ao treino, foi aplicado um processo de data augmentation, incluindo giros horizontais e verticais, conversão de 15\% das imagens para tons de cinza, ajustes no brilho em 15\% das imagens e variações na exposição em 10\%. Além disso, foram adicionados efeitos de borrão com intensidade de 0,7 px e ruído de até 1,5\%. Com essas técnicas, o conjunto de dados passou a contar com 1.521 imagens para treino, 109 para avaliação e 109 para teste, onde todas foram redimensionadas para as dimensões 640x640.
+        
+        Essas modificações visam tornar o modelo mais robusto, permitindo um aprendizado mais eficiente das características dos eixos e, consequentemente, a realização de predições mais precisas.
 
     \subsection{Características do modelo implementado}
-        Para este estudo, duas diferentes abordagens serão exploradas. A primeira, seguindo o desenvolvimento de \cite{Souza2024}, \cite{marcomini2023truckaxledetectionconvolutional} e \cite{Miles2022}, será utilizado a versão mais recente do YOLO, a YOLOv11 \cite{khanam2024yolov11overviewkeyarchitectural}, que apresenta uma melhoria de 2\% no tempo de predição em relação à YOLOv10 e possui 22\% menos parâmetros que a YOLOv8m, sendo mais eficiente e efetiva ao manter os níveis de acurácia. 
-        
-        Já a outra abordagem seguirá a ideia de uma rede convolucional padrão, como a utilizada em \cite{Almutairi2022}. Todavia, como a quantidade de de eixos varia de acordo com o tipo de caminhão, será utilizada uma regressão para computar a quantidade de eixos detectados na imagem, utilizando a loss MAE, que retorna o valor do erro na mesma unidade de medida.
+        Para este estudo, serão exploradas duas abordagens distintas. A primeira baseia-se nos trabalhos de \cite{Souza2024}, \cite{marcomini2023truckaxledetectionconvolutional} e \cite{Miles2022} para a detecção de eixos, utilizando as duas versões mais recentes do YOLO. A YOLOv11 \cite{khanam2024yolov11overviewkeyarchitectural} apresenta uma redução de 2\% no tempo de predição em comparação à YOLOv10 e possui 22\% menos parâmetros do que a YOLOv8m, tornando-se mais eficiente sem comprometer os níveis de acurácia. Já a YOLOv12 \cite{tian2025yolov12attentioncentricrealtimeobject} substitui as redes convolucionais por mecanismos de atenção, resultando em um tempo de latência inferior ao de seus antecessores.
+
+        Já a outra abordagem será a de uma rede neural convolucional, como a utilizada em \cite{Almutairi2022}, porém sua saída será a quantidade de eixos presentes na imagem. Todavia, como a quantidade de eixos varia de acordo com o tipo de caminhão e não há uma distribuição balanceada para a quantidade de eixos, o uso de um classificador pode não gerar bons resultados. Assim, será feito um trabalho de regressão a fim de identificar a quantidade de eixos presentes na imagem.
 
     \subsection{Métricas de avaliação}
-        Como métrica para avaliar os modelos treinados, serão utilizadas métricas de Precision (Indicando o quanto dos eixos identificados de fato eram eixos), Recall (Indicando quantas vezes o modelo não identificou um eixo onde de fato não deveria ter) e F1-Score, uma vez que, para base de dados desbalanceadas, o uso da acurácia pode não refletir corretamente a eficiência do modelo.
+        Para os modelos baseados em YOLO, a métrica mAP (mean Average Precision) será utilizada para avaliar a qualidade das predições e sua correspondência com as anotações originais. Quanto maior o valor da mAP, mais precisas e alinhadas com o esperado serão as predições do modelo.
+        
+        Serão consideradas diferentes variações da mAP, como mAP50, mAP75 e mAP50-95. Essas variações indicam a precisão das detecções com base no limiar de IoU (Interseção sobre União). A mAP50 considera uma detecção correta quando a predição atinge pelo menos 50\% de IoU com a anotação real, enquanto a mAP75 exige um mínimo de 75\%. Já a mAP50-95 calcula a média da precisão em múltiplos limiares, variando de 50\% a 95\%, proporcionando uma visão mais abrangente do desempenho do modelo.
+
+        Para os modelos treinados por meio de regressão, o valor real de cada predição será arredondado para o inteiro mais próximo e comparado com a sua \textit{label}. Dessa forma, serão utilizadas métricas de Precision (Indicando o quanto dos eixos identificados de fato eram eixos), Recall (Indicando quantas vezes o modelo não identificou um eixo onde de fato não deveria ter), F1-Score e acurácia para avaliar a qualidade dos modelos. 
+        
+        Os modelos treinados com YOLO também serão comparados com os outros, onde será utilizado a quantidade de eixos detectados para que se obtenha tais métricas, independente se o modelo identificou algo em um local errado. Consequentemente, seus resultados serão diferentes nas duas avaliações.       
     
 
-\section{References}
+\input{segunda_entrega}
+
+\section{Referências}
 \bibliographystyle{sbc}
 
 \bibliography{sbc-template}
