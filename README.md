@@ -23,7 +23,7 @@ Using YOLOv11m and YOLOv12m to detect the axles resulted in excellent results, a
 
 An example of YOLOv11m's predictions can be seen in the image below:
 
-![Imagem](Relatorio\Images\yolo_outputs\yolo_output_20170418095402_color-[ROI-1]-94(1).jpg)
+![Imagem](Relatorio/Images/yolo_outputs/yolo_output_20170418095402_color-[ROI-1]-94(1).jpg)
 
 ## Counting models
 The second approach uses regression models to estimate the number of axles. These models receive an image as input and output a real number, which is then rounded to the nearest integer to produce the final prediction.
