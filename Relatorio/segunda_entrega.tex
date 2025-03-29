@@ -30,21 +30,21 @@
         \begin{figure} [!htb]
             \centering
             \includegraphics[width=1\linewidth]{Images//yolo_outputs/yolo_output_20170418095402_color-[ROI-1]-94(1).jpg}
-            \caption{Predição pelo modelo YOLO com caminhão de quatro eixos}
+            \caption{Predição pelo modelo YOLOv11 com caminhão de quatro eixos}
             \label{fig:predicao_yolo_1}
         \end{figure}
 
         \begin{figure} [!htb]
             \centering
             \includegraphics[width=1\linewidth]{Images//yolo_outputs/yolo_output_20170418074140-550_color-[ROI-1]-30.jpg}
-            \caption{Predição pelo modelo YOLO com caminhão de seis eixos}
+            \caption{Predição pelo modelo YOLOv11 com caminhão de seis eixos}
             \label{fig:predicao_yolo_2}
         \end{figure}
 
         \begin{figure} [!htb]
             \centering
             \includegraphics[width=1\linewidth]{Images//yolo_outputs/yolo_output_20160927102749_color-[ROI-1]-1.jpg}
-            \caption{Predição pelo modelo YOLO com caminhão de sete eixos}
+            \caption{Predição pelo modelo YOLOv11 com caminhão de sete eixos}
             \label{fig:predicao_yolo_3}
         \end{figure}
         
@@ -110,8 +110,11 @@
 
         Assim, com tais resultados que corroboram com os dados vistos na tabela \ref{tab:avaliacao}, percebe-se que o uso da YOLOv11 é mais atrativo até mesmo para a tarefa de contagem de eixos. Ademais, o seu custo computacional inferior aos modelos que usam CNN's fazem com que o seu uso seja ainda mais adequado, mesmo no contexto em que, segundo o seu artigo, a YOLOv12 possa ser mais rápida.
             
-
 \section{Conclusão}
     A partir de testes com diferentes arquiteturas e modelos, foi possível identificar uma configuração que se destacou em relação às demais, apresentando alta taxa de acertos e menor custo computacional. Tal modelo é o que foi refinado a partir da YOLOv11m, alcançando um F1 Score de 0.99 na detecção de eixos. No entanto, os valores do mAP50-95 ainda podem ser aprimorados por meio de uma definição mais precisa das \textit{bounding boxes} nas imagens.
 
     Para trabalhos futuros, seria interessante considerar o uso de imagens capturadas em períodos noturnos, bem como explorar modelos capazes de diferenciar distintos veículos na cena, em vez de agrupá-los como um único objeto. Essa abordagem seria essencial para a implementação de um sistema em tempo real capaz de lidar com múltiplos veículos simultaneamente.
+
+
+\section{Código fonte}
+    O código fonte utilizado no trabalho pode ser encontrado no \href{https://github.com/matheusprv/truck-axle-detection}{Repositório do projeto}.

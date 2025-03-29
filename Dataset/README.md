@@ -11,4 +11,10 @@ The original dataset can be found [here](https://zenodo.org/records/5744737), bu
 # Data Distribution
 The original dataset contains 725 images. From these, 80% was used for training, 15% for validation and 15% for test.
 
-The training iamges went through an augmentation process which resulted in 1521 training images.
+The training images went through an augmentation process which resulted in 1521 training images.
+
+Final data distribution can be found in the table below
+
+| Train | Validation | Test |  
+|:-----:|:----------:|:----:|
+| 1521  | 109        | 109  |  
