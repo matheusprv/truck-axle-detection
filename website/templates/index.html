@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detecção de eixos de caminhão</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+  <div class="container">
+    <form id="uploadForm" enctype="multipart/form-data">
+      <input type="file" name="image" id="imageInput" accept="image/*" />
+      <br />
+      <button type="submit">Enviar</button>
+    </form>
+
+    <div class="image-wrapper">
+      <img id="previewImage" src="" alt="Resultado ou preview aparecem aqui" />
+      <div id="processingText" class="processing-text">Processando...</div>
+    </div>
+  </div>
+  
+  <p id="resultText" style="font-size: 18px; margin-top: 10px;"></p>
+  
+  <script src="{{ url_for('static', filename='script/script.js') }}"></script>
+</body>
+
+</html>
